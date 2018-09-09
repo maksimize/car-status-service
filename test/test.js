@@ -33,8 +33,7 @@ describe('Chat Events', function () {
             });
             receiver.on('connect', function (msg) {
                 console.log('=> reciver pluged');
-                redisClient.publish("radio", testMsg);
-
+                redisClient.publish("car_status", testMsg);
             });
         })
     })
