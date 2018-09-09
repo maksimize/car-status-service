@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = function SocketsIo(http, redisClient) {
 
+module.exports = function SocketsIo(http, redisClient) {
+    var redisChannel = process.env.REDISCHANNEL || 'car_status';
     var io = require('socket.io')(http);
 
-    redisClient.subscribe("radio");
+    redisClient.subscribe(redisChannel);
 
     io.on('connection', function (socket) {
         console.log('=> Client has been connected');

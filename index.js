@@ -5,7 +5,7 @@ var redisPort = process.env.REDISPORT || 6379
     , redis = require("redis")
     , redisClient = redis.createClient(redisPort, redisHost);
 
-console.log("====App Start====");
+console.log("====Car Status Service App Start====");
 
 var Server = require("./Server");
 new Server(redisClient);
