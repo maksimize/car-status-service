@@ -1,20 +1,11 @@
-var express = require('express')
-    , app = express()
-    , port = process.env.PORT || 3000
-    , http = require('http').Server(app)
-    , io = require('socket.io')(http);
+'use strict';
 
-io.on('connection', function (socket) {
-    console.log('Client has been connected');
+var redisPort = process.env.REDISPORT || 6379
+    , redisHost = process.env.REDISHOST || '127.0.0.1'
+    , redis = require("redis")
+    , redisClient = redis.createClient(redisPort, redisHost);
 
-    socket.on('message', function (msg) {
-        io.sockets.emit('message', msg)
-    });
+console.log("====App Start====");
 
-    socket.on('disconnect', function () {
-        console.log('Client disconnected');
-    });
-});
-
-// export the server so it can be easily called for testing
-exports.server = http.listen(port);
+var Server = require("./Server");
+new Server(redisClient);
