@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./target/junit.xml",
     "start": "node index.js",
     "debugTest": "DEBUG=* mocha test"
   },
@@ -17,8 +17,9 @@
     "socket.io": "^1.2.1"
   },
   "devDependencies": {
-    "redis-mock": "^0.32.0",
+    "chai": "^1.10.0",
     "mocha": "^2.0.1",
-    "chai": "^1.10.0"
+    "mocha-junit-reporter": "^1.18.0",
+    "redis-mock": "^0.32.0"
   }
 }
