@@ -1,0 +1,16 @@
+---
+# provisioning-production.yml
+
+- name: deployment | frontend applications
+  hosts: "car-status-server"
+  gather_facts: "false"
+  tasks:
+    - name: Create application container
+      docker_container:
+        name: car-status-service
+        image: car-status-service
+        env:
+          PORT: 80
+          REDISHOST: car-status-channel.nybflb.0001.apse1.cache.amazonaws.com
+        ports:
+         - "80:80"
