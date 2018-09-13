@@ -9,6 +9,7 @@
       docker_container:
         name: car-status-service
         image: 409506722486.dkr.ecr.ap-southeast-1.amazonaws.com/car-status-service:latest
+        restart_policy: always
         env:
           PORT: 80
           REDISHOST: car-status-channel.nybflb.0001.apse1.cache.amazonaws.com
